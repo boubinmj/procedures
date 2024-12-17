@@ -17,8 +17,34 @@
           <li>Implementing data integrations, including connections with Symplicity Careers, NYU University Data Warehouse, and Drupal 8 Web CMS</li>
           <li>Managing applications to utilize new features of Salesforce</li>
         </ul>
-        <p>Hello, {greeting}!</p>
-        <lightning-input label="Name" value={greeting} onchange={changeHandler}></lightning-input>
       </div>
+      <div class="slds-p-around_small">
+        <!-- Search Input -->
+        <lightning-input 
+            type="text" 
+            label="Search Account" 
+            placeholder="Enter Account Name" 
+            onchange={handleSearchInput}>
+        </lightning-input>
+
+        <!-- Display Search Results -->
+        <template if:true={accounts}>
+            <ul class="slds-list_dotted slds-p-top_small">
+                <template for:each={accounts} for:item="account">
+                    <li key={account.Id}>{account.Name}</li>
+                </template>
+            </ul>
+        </template>
+
+        <!-- No Results Message -->
+        <template if:true={searchKey}>
+            <template if:true={accounts.length}>
+                <p class="slds-text-color_success">Found {accounts.length} result(s).</p>
+            </template>
+            <template if:false={accounts.length}>
+                <p class="slds-text-color_error">No accounts found.</p>
+            </template>
+        </template>
+    </div>
     </lightning-card>
   </template>
