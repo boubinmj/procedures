@@ -1,5 +1,5 @@
 import { LightningElement , track, wire} from 'lwc';
-import searchAccounts from '@salesforce/apex/AccountSearchController.searchAccounts';
+import searchAccounts from '@salesforce/apex/AccountSearch.searchAccounts';
 export default class HelloWorld extends LightningElement {
         @track searchKey = '';
         @track accounts = [];
